@@ -48,6 +48,7 @@ MAX_UINT_BITSIZE = 256
 
 class BloomFilter:
     # http://en.wikipedia.org/wiki/Bloom_filter
+    # ref: https://code.activestate.com/recipes/577686-bloom-filter/
 
     def __init__(self, max_elements, error_rate, probe_func):
 
