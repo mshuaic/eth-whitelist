@@ -1,4 +1,4 @@
-# An Ethereum smart contract whitelist implementation using a [bloom-filter](https://en.wikipedia.org/wiki/Bloom_filter) 
+# An Ethereum smart contract whitelist implementation using a [bloom filter](https://en.wikipedia.org/wiki/Bloom_filter) and a [merkle tree](https://en.wikipedia.org/wiki/Merkle_tree)
 
 * smart contract dependencies
 
@@ -7,13 +7,14 @@
     
 * python test driver
 
-      test.py
+      test_[mt, bf].py
       
 * smart contract test contract
 
-      contracts/test_bf.sol
+      contracts/test_[mt, bf].sol
       
       
-* bare minimum implementation for a bloom-filter whitelist 
+* bare minimum implementation for a whitelist 
 
       contracts/BloomFilterWhiteList.sol
+	  contracts/MerkleTreeWhiteList.sol
