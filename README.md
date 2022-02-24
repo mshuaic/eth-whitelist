@@ -1,4 +1,4 @@
-# An Ethereum smart contract whitelist implementation using [bloom filter](https://en.wikipedia.org/wiki/Bloom_filter), [merkle tree](https://en.wikipedia.org/wiki/Merkle_tree), or a [EIP-712](https://eips.ethereum.org/EIPS/eip-712)
+# An Ethereum smart contract whitelist implementation using [bloom filter](https://en.wikipedia.org/wiki/Bloom_filter), [merkle tree](https://en.wikipedia.org/wiki/Merkle_tree), or [EIP-712](https://eips.ethereum.org/EIPS/eip-712)
 
 * smart contract dependencies
 
