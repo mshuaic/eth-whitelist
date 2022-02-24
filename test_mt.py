@@ -26,10 +26,11 @@ w3.eth.default_account = w3.eth.accounts[0]
 
 n_test_acct = 11
 mt = MerkleTree(w3.eth.accounts[:n_test_acct])
-
+print(w3.eth.accounts[:n_test_acct])
 
 Test = w3.eth.contract(abi=c.abi, bytecode=c.bytecode)
 tx_hash = Test.constructor(mt.root).transact()
+print("0x"+mt.root.hex())
 
 
 tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)

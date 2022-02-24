@@ -10,7 +10,7 @@ contract test_mt is MerkleTreeWhiteList{
 	{}
     
 
-    function test(bytes32[] memory proof)
+    function test(bytes32[] calldata proof)
 	whitelisted(proof)
 	public view returns(bool)
         {

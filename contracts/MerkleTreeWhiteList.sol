@@ -13,7 +13,7 @@ abstract contract MerkleTreeWhiteList is Context{
 	root = _root;
     }
 
-    modifier whitelisted(bytes32[] memory proof)
+    modifier whitelisted(bytes32[] calldata proof)
     {
 	bytes32 leaf = keccak256(abi.encodePacked(_msgSender()));
 	require(MerkleProof.verify(proof, root, leaf), "no access");

@@ -1,3 +1,5 @@
+contracts/artifacts/
+
 node_modules/
 
 # Byte-compiled / optimized / DLL files

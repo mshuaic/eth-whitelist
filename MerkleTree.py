@@ -1,6 +1,7 @@
 from sha3 import keccak_256
 from math import ceil, log
 from eth_abi.packed import encode_abi_packed
+import sys
 
 
 def encoder(data):
@@ -43,4 +44,9 @@ def test():
 
 
 if __name__ == '__main__':
-    test()
+    # test()
+    nodes = sys.argv[1:]
+    mt = MerkleTree(nodes)
+    print(mt.root.hex())
+    print(mt.root)
+    print(list(map(lambda x: x.hex(), mt.proofs[0])))
