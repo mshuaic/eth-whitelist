@@ -3,45 +3,28 @@ from solcx import compile_files
 
 
 class Contract():
-    def __init__(self, contract_files, *,
+    def __init__(self, contract_name, contract_file, *,
                  base_path='.',
-                 import_remappings=None):
+                 import_remappings=None, **kwargs
+                 ):
+        contract_file = contract_file.lstrip("./")
         compiled_sol = compile_files(
-            contract_files,
+            contract_file,
             output_values=["abi", "bin"],
             base_path='.',
-            import_remappings=import_remappings)
+            import_remappings=import_remappings,
+            **kwargs)
 
-        contract_id, contract_interface = compiled_sol.popitem()
+        # print(compiled_sol)
+        # print(compiled_sol["contracts/Aaa.sol:Artopus"])
+        contract_interface = compiled_sol[f"{contract_file}:{contract_name}"]
         self.bytecode = contract_interface['bin']
         # get abi
         self.abi = contract_interface['abi']
 
-        # self.contract = w3.eth.contract(abi=abi, bytecode=bytecode)
 
-
-# c = Contract(['./contracts/GameItem.sol'], {
-#     "@openzeppelin": "/node_modules/@openzeppelin"})
-
-
-# # web3.py instance
-# w3 = Web3(Web3.EthereumTesterProvider())
-# # set pre-funded account as sender
-# w3.eth.default_account = w3.eth.accounts[0]
-
-
-# Hello = w3.eth.contract(abi=abi, bytecode=bytecode)
-# tx_hash = Hello.constructor().transact()
-# tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
-
-# hello = w3.eth.contract(
-#     address=tx_receipt.contractAddress,
-#     abi=abi
-# )
-
-# print(hello.functions.get().call())
-
-
-# Hello = w3.eth.contract(abi=abi, bytecode=bytecode)
-# tx_hash = Hello.constructor().transact()
-# tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
+if __name__ == "__main__":
+    import sys
+    c = Contract("Artopus", sys.argv[1], import_remappings={
+        "@openzeppelin": "/node_modules/@openzeppelin"})
+    print(c.bytecode)
